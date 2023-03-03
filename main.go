@@ -24,6 +24,7 @@ func main() {
 	}
 
 	b.Handle("cujes", handlers.Hello)
+	b.Handle(tele.OnText, handlers.All)
 
 	b.Start()
 }

@@ -19,15 +19,18 @@ func NewChatGPT(c *config.ChatGPT) *ChatGPT {
 	}
 }
 
+func (c *ChatGPT) Reset() {
+	c.Messages = []gogpt.ChatCompletionMessage{}
+}
+
 func (c *ChatGPT) Chat(message string) (string, error) {
+	c.Messages = append(c.Messages, gogpt.ChatCompletionMessage{
+		Role:    "user",
+		Content: message,
+	})
 	resp, err := c.Client.CreateChatCompletion(context.Background(), gogpt.ChatCompletionRequest{
-		Model: gogpt.GPT3Dot5Turbo,
-		Messages: []gogpt.ChatCompletionMessage{
-			{
-				Role:    "user",
-				Content: message,
-			},
-		},
+		Model:    gogpt.GPT3Dot5Turbo,
+		Messages: c.Messages,
 	})
 	if err != nil {
 		fmt.Println(err)

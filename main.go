@@ -26,7 +26,8 @@ func main() {
 		return
 	}
 
-	b.Handle("cujes", handlers.Hello)
+	b.Handle("hello", handlers.Hello)
+	b.Handle("new chat", handlers.NewChat)
 	b.Handle(tele.OnText, handlers.All)
 
 	b.Start()

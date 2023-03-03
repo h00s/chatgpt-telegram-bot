@@ -18,7 +18,12 @@ func NewHandlers(s *services.Services) *Handlers {
 }
 
 func (h *Handlers) Hello(c tele.Context) error {
-	return c.Send("Cujem!")
+	return c.Send("Hello!")
+}
+
+func (h *Handlers) NewChat(c tele.Context) error {
+	h.Services.ChatGPT.Reset()
+	return c.Send("Ok, new chat started!")
 }
 
 func (h *Handlers) All(c tele.Context) error {

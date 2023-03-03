@@ -1,15 +1,32 @@
 package handlers
 
 import (
+	"fmt"
+
+	"github.com/h00s-go/h00s-bot/services"
 	tele "gopkg.in/telebot.v3"
 )
 
-func Hello(c tele.Context) error {
+type Handlers struct {
+	Services *services.Services
+}
+
+func NewHandlers(s *services.Services) *Handlers {
+	return &Handlers{
+		Services: s,
+	}
+}
+
+func (h *Handlers) Hello(c tele.Context) error {
 	return c.Send("Cujem!")
 }
 
-func All(c tele.Context) error {
-	m := c.Message()
+func (h *Handlers) All(c tele.Context) error {
+	response, err := h.Services.ChatGPT.Chat(c.Message().Text)
+	if err != nil {
+		fmt.Println(err)
+		c.Send("Something went wrong...")
+	}
 
-	return c.Send("You said: " + m.Text)
+	return c.Send(response)
 }

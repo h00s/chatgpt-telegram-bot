@@ -6,11 +6,14 @@ import (
 
 	"github.com/h00s-go/h00s-bot/config"
 	"github.com/h00s-go/h00s-bot/handlers"
+	"github.com/h00s-go/h00s-bot/services"
 	tele "gopkg.in/telebot.v3"
 )
 
 func main() {
 	config := config.NewConfig()
+	services := services.NewServices(config)
+	handlers := handlers.NewHandlers(services)
 
 	b, err := tele.NewBot(
 		tele.Settings{

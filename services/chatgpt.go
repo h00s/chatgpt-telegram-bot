@@ -10,21 +10,21 @@ import (
 
 type ChatGPT struct {
 	Client   *gogpt.Client
-	Messages map[string][]gogpt.ChatCompletionMessage
+	Messages map[int64][]gogpt.ChatCompletionMessage
 }
 
 func NewChatGPT(c *config.ChatGPT) *ChatGPT {
 	return &ChatGPT{
 		Client:   gogpt.NewClient(c.APIKey),
-		Messages: map[string][]gogpt.ChatCompletionMessage{},
+		Messages: map[int64][]gogpt.ChatCompletionMessage{},
 	}
 }
 
-func (c *ChatGPT) Reset(user string) {
+func (c *ChatGPT) Reset(user int64) {
 	c.Messages[user] = []gogpt.ChatCompletionMessage{}
 }
 
-func (c *ChatGPT) Chat(user, message string) (string, error) {
+func (c *ChatGPT) Chat(user int64, message string) (string, error) {
 	if _, ok := c.Messages[user]; !ok {
 		c.Reset(user)
 	}

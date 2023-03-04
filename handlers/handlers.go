@@ -38,6 +38,7 @@ func (h *Handlers) NewChat(c tele.Context) error {
 }
 
 func (h *Handlers) All(c tele.Context) error {
+	c.Notify(tele.Typing)
 	h.LogMessage(c)
 	response, err := h.Services.ChatGPT.Chat(c.Message().Sender.Username, c.Message().Text)
 	if err != nil {

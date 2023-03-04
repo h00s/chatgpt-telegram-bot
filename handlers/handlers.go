@@ -9,12 +9,16 @@ import (
 )
 
 type Handlers struct {
-	Services *services.Services
+	Services    *services.Services
+	SendOptions *tele.SendOptions
 }
 
 func NewHandlers(s *services.Services) *Handlers {
 	return &Handlers{
 		Services: s,
+		SendOptions: &tele.SendOptions{
+			ParseMode: tele.ModeMarkdown,
+		},
 	}
 }
 
@@ -41,5 +45,5 @@ func (h *Handlers) All(c tele.Context) error {
 		c.Send("Something went wrong...")
 	}
 
-	return c.Send(response)
+	return c.Send(response, h.SendOptions)
 }

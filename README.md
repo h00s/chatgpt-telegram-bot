@@ -26,3 +26,11 @@ services:
       - TELEGRAM_TOKEN=123456:abc
       - CHATGPT_APIKEY=sk-123456
 ```
+
+## Commands and usage
+
+- `/start`: Start the bot
+- `/hello`: Test the bot if it's working
+- `/new`: Start a new conversation (chatgpt will forget the previous conversation)
+
+Any message sent to the bot will be sent to chatgpt and the response will be sent back to the user.

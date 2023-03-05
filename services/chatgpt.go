@@ -13,7 +13,7 @@ type ChatGPT struct {
 	Messages map[int64][]gogpt.ChatCompletionMessage
 }
 
-func NewChatGPT(c *config.ChatGPT) *ChatGPT {
+func NewChatGPT(c *config.OpenAI) *ChatGPT {
 	return &ChatGPT{
 		Client:   gogpt.NewClient(c.APIKey),
 		Messages: map[int64][]gogpt.ChatCompletionMessage{},

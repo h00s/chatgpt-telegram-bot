@@ -8,6 +8,6 @@ type Services struct {
 
 func NewServices(c *config.Config) *Services {
 	return &Services{
-		ChatGPT: NewChatGPT(&c.ChatGPT),
+		ChatGPT: NewChatGPT(&c.OpenAI),
 	}
 }

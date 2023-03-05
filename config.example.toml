@@ -1,5 +1,5 @@
 [telegram]
 token = "1234567890:ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-[chatgpt]
+[openai]
 apikey = "sk-ABC123"

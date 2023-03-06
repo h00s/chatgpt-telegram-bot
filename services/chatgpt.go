@@ -9,32 +9,22 @@ import (
 )
 
 type ChatGPT struct {
-	Client   *gogpt.Client
-	Messages map[int64][]gogpt.ChatCompletionMessage
+	Client *gogpt.Client
+	Chats  *Chats
 }
 
 func NewChatGPT(c *config.OpenAI) *ChatGPT {
 	return &ChatGPT{
-		Client:   gogpt.NewClient(c.APIKey),
-		Messages: map[int64][]gogpt.ChatCompletionMessage{},
+		Client: gogpt.NewClient(c.APIKey),
+		Chats:  NewChats(),
 	}
-}
-
-func (c *ChatGPT) Reset(user int64) {
-	c.Messages[user] = []gogpt.ChatCompletionMessage{}
 }
 
 func (c *ChatGPT) Chat(user int64, message string) (string, error) {
-	if _, ok := c.Messages[user]; !ok {
-		c.Reset(user)
-	}
-	c.Messages[user] = append(c.Messages[user], gogpt.ChatCompletionMessage{
-		Role:    "user",
-		Content: message,
-	})
+	c.Chats.AddMessage(user, message)
 	resp, err := c.Client.CreateChatCompletion(context.Background(), gogpt.ChatCompletionRequest{
 		Model:    gogpt.GPT3Dot5Turbo,
-		Messages: c.Messages[user],
+		Messages: c.Chats.Chats[user].Messages,
 	})
 	if err != nil {
 		fmt.Println(err)

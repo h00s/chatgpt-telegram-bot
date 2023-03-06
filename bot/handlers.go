@@ -24,7 +24,7 @@ func (b *Bot) Hello(c tele.Context) error {
 
 func (b *Bot) NewChat(c tele.Context) error {
 	b.LogMessage(c)
-	b.Services.ChatGPT.Reset(c.Message().Sender.ID)
+	b.Services.ChatGPT.Chats.ResetChat(c.Message().Sender.ID)
 	return c.Send("Ok, new chat started!")
 }
 

@@ -11,10 +11,10 @@ type Chat struct {
 	LastMessageAt time.Time
 }
 
-func (c Chat) AddMessage(message string) Chat {
+func (c Chat) AddMessage(role string, message string) Chat {
 	c.LastMessageAt = time.Now()
 	c.Messages = append(c.Messages, gogpt.ChatCompletionMessage{
-		Role:    "user",
+		Role:    role,
 		Content: message,
 	})
 	return c
@@ -37,12 +37,12 @@ func (c *Chats) ResetChat(user int64) {
 	}
 }
 
-func (c *Chats) AddMessage(user int64, message string) {
+func (c *Chats) AddMessage(user int64, role string, message string) {
 	if _, ok := c.Chats[user]; !ok {
 		c.ResetChat(user)
 	}
 	if (time.Since(c.Chats[user].LastMessageAt) / time.Minute) > 5 {
 		c.ResetChat(user)
 	}
-	c.Chats[user] = c.Chats[user].AddMessage(message)
+	c.Chats[user] = c.Chats[user].AddMessage(role, message)
 }

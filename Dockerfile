@@ -5,10 +5,10 @@ WORKDIR /src
 COPY . ./
 
 RUN go mod download && \
-    go build -o /out/husakgpt
+    go build -o /out/chatgpt-telegram-bot
 
 FROM alpine
 
-COPY --from=build /out/husakgpt /bin
+COPY --from=build /out/chatgpt-telegram-bot /bin
 
-CMD [ "/bin/husakgpt" ]
+CMD [ "/bin/chatgpt-telegram-bot" ]

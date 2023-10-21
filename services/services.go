@@ -1,6 +1,6 @@
 package services
 
-import "github.com/h00s-go/h00s-bot/config"
+import "github.com/h00s/chatgpt-telegram-bot/config"
 
 type Services struct {
 	ChatGPT *ChatGPT

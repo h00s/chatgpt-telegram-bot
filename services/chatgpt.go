@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/h00s-go/h00s-bot/config"
+	"github.com/h00s/chatgpt-telegram-bot/config"
 	gogpt "github.com/sashabaranov/go-openai"
 )
 

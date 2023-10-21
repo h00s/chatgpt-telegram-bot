@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 
-	"github.com/h00s-go/h00s-bot/bot"
-	"github.com/h00s-go/h00s-bot/config"
-	"github.com/h00s-go/h00s-bot/services"
+	"github.com/h00s/chatgpt-telegram-bot/bot"
+	"github.com/h00s/chatgpt-telegram-bot/config"
+	"github.com/h00s/chatgpt-telegram-bot/services"
 )
 
 func main() {

@@ -3,8 +3,8 @@ package bot
 import (
 	"time"
 
-	"github.com/h00s-go/h00s-bot/config"
-	"github.com/h00s-go/h00s-bot/services"
+	"github.com/h00s/chatgpt-telegram-bot/config"
+	"github.com/h00s/chatgpt-telegram-bot/services"
 	tele "gopkg.in/telebot.v3"
 )
 

@@ -6,4 +6,4 @@ require gopkg.in/telebot.v3 v3.1.3
 
 require github.com/BurntSushi/toml v1.3.2
 
-require github.com/sashabaranov/go-gpt3 v1.4.0
+require github.com/sashabaranov/go-openai v1.16.0

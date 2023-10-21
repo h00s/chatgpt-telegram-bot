@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/h00s-go/h00s-bot/config"
-	gogpt "github.com/sashabaranov/go-gpt3"
+	gogpt "github.com/sashabaranov/go-openai"
 )
 
 type ChatGPT struct {
@@ -23,7 +23,7 @@ func NewChatGPT(c *config.OpenAI) *ChatGPT {
 func (c *ChatGPT) Chat(user int64, message string) (string, error) {
 	c.Chats.AddMessage(user, message)
 	resp, err := c.Client.CreateChatCompletion(context.Background(), gogpt.ChatCompletionRequest{
-		Model:    gogpt.GPT3Dot5Turbo,
+		Model:    gogpt.GPT3Dot5Turbo0301,
 		Messages: c.Chats.Chats[user].Messages,
 	})
 	if err != nil {

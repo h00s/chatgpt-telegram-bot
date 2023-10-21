@@ -3,7 +3,7 @@ package services
 import (
 	"time"
 
-	gogpt "github.com/sashabaranov/go-gpt3"
+	gogpt "github.com/sashabaranov/go-openai"
 )
 
 type Chat struct {

@@ -26,7 +26,6 @@ func (c *ChatGPT) Chat(user int64, message string) (string, error) {
 		Model:    gogpt.GPT3Dot5Turbo1106,
 		Messages: c.Chats.Chats[user].Messages,
 	})
-	fmt.Println(c.Chats.Chats[user].Messages)
 	if err != nil {
 		fmt.Println(err)
 		return "", err

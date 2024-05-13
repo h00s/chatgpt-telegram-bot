@@ -23,7 +23,7 @@ func NewChatGPT(c *config.OpenAI) *ChatGPT {
 func (c *ChatGPT) Chat(user int64, message string) (string, error) {
 	c.Chats.AddMessage(user, "user", message)
 	resp, err := c.Client.CreateChatCompletion(context.Background(), gogpt.ChatCompletionRequest{
-		Model:    gogpt.GPT3Dot5Turbo0125,
+		Model:    gogpt.GPT4o,
 		Messages: c.Chats.Chats[user].Messages,
 	})
 	if err != nil {

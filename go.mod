@@ -4,6 +4,6 @@ go 1.21
 
 require (
 	github.com/BurntSushi/toml v1.4.0
-	github.com/sashabaranov/go-openai v1.24.1
-	gopkg.in/telebot.v3 v3.2.1
+	github.com/sashabaranov/go-openai v1.28.1
+	gopkg.in/telebot.v3 v3.3.8
 )
